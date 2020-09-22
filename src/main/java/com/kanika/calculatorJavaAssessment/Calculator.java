@@ -72,8 +72,7 @@ public class Calculator {
 		String operationName = null;
 		if(calculationMode==null || adder==null) {
 			operationName = "ADD";
-			DefaultAdder defaultAdder = new DefaultAdder();
-			this.adder = defaultAdder;
+			adder = new DefaultAdder();
 		}
 		else if(calculationMode==CalculationMode.CUSTOM && adder!=null)
 			operationName = "CUSTOM ADD";
@@ -82,10 +81,8 @@ public class Calculator {
 		Integer sum = adder.add(numbers);
     	
     	// Instantiate the list operations if not done yet
-		if(operations==null) {
-			List<Operation> operations = new ArrayList<Operation>();
-			this.operations = operations;
-		}
+		if(operations==null)
+			operations = new ArrayList<Operation>();
 		
 		// Add to Operations
 		for(int i=0;i<numbers.size()-1;i++)	{
@@ -108,8 +105,7 @@ public class Calculator {
 		String operationName = null;
 		if(calculationMode==null || subtractor==null) {
 			operationName = "SUB";
-			DefaultSubtractor defaultSubtractor = new DefaultSubtractor();
-			this.subtractor = defaultSubtractor;
+			subtractor = new DefaultSubtractor();
 		}
 		else if(calculationMode==CalculationMode.CUSTOM && subtractor!=null)
 			operationName = "CUSTOM SUB";
@@ -118,10 +114,8 @@ public class Calculator {
     	Integer sub = subtractor.subtract(a, b);
     	
     	// Instantiate the list operations if not done yet
-    	if(operations==null) {
-			List<Operation> operations = new ArrayList<Operation>();
-			this.operations = operations;
-		}
+    	if(operations==null)
+			operations = new ArrayList<Operation>();
     	
 		// Add to operations
 		Operation op=new Operation(a,b,operationName);			
@@ -136,8 +130,7 @@ public class Calculator {
 		String operationName = null;
 		if(calculationMode==null || multiplier==null) {
 			operationName = "MUL";
-			DefaultMultiplier defaultMultiplier = new DefaultMultiplier();
-			this.multiplier = defaultMultiplier;
+			multiplier = new DefaultMultiplier();
 		}
 		else if(calculationMode==CalculationMode.CUSTOM && multiplier!=null)
 			operationName = "CUSTOM MUL";
@@ -146,10 +139,8 @@ public class Calculator {
     	Integer mul = multiplier.multiply(numbers);
 
     	// Instantiate the list operations if not done yet
-    	if(operations==null) {
-			List<Operation> operations = new ArrayList<Operation>();
-			this.operations = operations;
-		}
+    	if(operations==null)
+			operations = new ArrayList<Operation>();
     	
     	// Add to operations
 		for(int i=0;i<numbers.size()-1;i++)	{
@@ -171,8 +162,7 @@ public class Calculator {
 		String operationName = null;
 		if(calculationMode==null || divider==null) {
 			operationName = "DIV";
-			DefaultDivider defaultDivider = new DefaultDivider();
-			this.divider = defaultDivider;
+			divider = new DefaultDivider();
 		}
 		else if(calculationMode==CalculationMode.CUSTOM && divider!=null)
 			operationName = "CUSTOM DIV";
@@ -181,10 +171,8 @@ public class Calculator {
     	Integer div = divider.divide(a, b);
     	
     	// Instantiate the list operations if not done yet
-    	if(operations==null) {
-			List<Operation> operations = new ArrayList<Operation>();
-			this.operations = operations;
-		}    	
+    	if(operations==null)
+			operations  = new ArrayList<Operation>();
     	
     	// Add to operations
 		Operation op=new Operation(a, b, operationName);
@@ -198,10 +186,9 @@ public class Calculator {
     		throw new NullPointerException();
  
     	// Instantiate operationsLogger and call operationsLogger 
-    	if(operationsLogger==null) {
-    		OperationsLogger operationsLogger = new OperationsLogger();
-    		this.operationsLogger = operationsLogger;
-    	}    	
+    	if(operationsLogger==null)
+			operationsLogger = new OperationsLogger();
+
         operationsLogger.logOperations(operations, loggingStrategy);
     }
 
