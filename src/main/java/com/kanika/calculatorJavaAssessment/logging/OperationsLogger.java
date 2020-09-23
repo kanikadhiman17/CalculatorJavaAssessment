@@ -37,20 +37,20 @@ public class OperationsLogger {
 
     public void logOperations(List<Operation> operations, LoggingStrategy loggingStrategy) {
         // Get logfile creator instance and create file
-    	LogfileCreator logFile = getLogfileCreator(loggingStrategy.fileFormat);
-    	File attachment = logFile.createLogFile(operations);
-    	
-        // Create an instance of Notification  	
-    	Notification notification = new Notification();	   
-    	notification.setSubject("Calculator Log File");
-    	notification.setFromAddress("xyz@gmail.com");
-    	notification.setSignature("Regards, \nKanika Dhiman");
-    	notification.setMessage("PFA the requested calculator logs file.");
-    	notification.setToAddress(loggingStrategy.email);
-    	notification.setAttachment(attachment);
-    	
-        // Obtain an instance of notification sender and send notification    	
-    	NotificationsSender notificationsSender = getNotificationsSender();
-    	notificationsSender.sendNotification(notification);
+        LogfileCreator logFile = getLogfileCreator(loggingStrategy.fileFormat);
+        File attachment = logFile.createLogFile(operations);
+
+        // Create an instance of Notification
+        Notification notification = new Notification();
+        notification.setSubject("Calculator Log File");
+        notification.setFromAddress("xyz@gmail.com");
+        notification.setSignature("Regards, \nKanika Dhiman");
+        notification.setMessage("PFA the requested calculator logs file.");
+        notification.setToAddress(loggingStrategy.email);
+        notification.setAttachment(attachment);
+
+        // Obtain an instance of notification sender and send notification
+        NotificationsSender notificationsSender = getNotificationsSender();
+        notificationsSender.sendNotification(notification);
     }
 }

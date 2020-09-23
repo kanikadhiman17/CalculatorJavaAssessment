@@ -10,24 +10,23 @@ public class TxtLogfileCreator implements LogfileCreator {
     @Override
     public File createLogFile(List<Operation> operations) {
     	
-    	String fileLocation = System.getProperty("user.dir")+"/src/main/java/com/kanika/calculatorJavaAssessment/logging/fileCreator/TXTOutput.txt";
+		String fileLocation = System.getProperty("user.dir")+"/src/main/java/com/kanika/calculatorJavaAssessment/logging/fileCreator/TXTOutput.txt";
 
-    	try {
-    		
-        	FileOutputStream out = new FileOutputStream(fileLocation);  	 
-        	String data = "Number, Operation \n";
-        	
-        	for(int i=0;i<operations.size();i++)
-        		data+=String.valueOf(i+1) + ", " + operations.get(i).toString() + '\n';
-        	
+		try {
+			FileOutputStream out = new FileOutputStream(fileLocation);
+			String data = "Number, Operation \n";
+
+			for(int i=0;i<operations.size();i++)
+				data+=String.valueOf(i+1) + ", " + operations.get(i).toString() + '\n';
+
 			out.write(data.getBytes());
 			out.close();
-		} 
-    	catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
-    	
-    	File file = new File(fileLocation);
-        return file;
+
+		File file = new File(fileLocation);
+		return file;
     }
 }

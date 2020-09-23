@@ -14,37 +14,37 @@ public class DocxLogfileCreator implements LogfileCreator{
     @Override
     public File createLogFile(List<Operation> operations) {
     	
-    	//Blank Document
-    	XWPFDocument document = new XWPFDocument(); 
+		//Blank Document
+		XWPFDocument document = new XWPFDocument();
 
-    	String fileLocation = System.getProperty("user.dir")+"/src/main/java/com/kanika/calculatorJavaAssessment/logging/fileCreator/DOCXOutput.docx";
-    	FileOutputStream out;
+		String fileLocation = System.getProperty("user.dir")+"/src/main/java/com/kanika/calculatorJavaAssessment/logging/fileCreator/DOCXOutput.docx";
+		FileOutputStream out;
 		try {
 			out = new FileOutputStream(new File(fileLocation));
 			//create table
-	        XWPFTable table = document.createTable();
-	        
-	        //create first row
-	        XWPFTableRow tableRowOne = table.getRow(0);
-	        tableRowOne.getCell(0).setText("Number");
-	        tableRowOne.addNewTableCell().setText("Operation");
-	                  
-	        
-	        for(int i=0;i<operations.size();i++)
-	        {
-	        	XWPFTableRow newRow = table.createRow();
-	        	newRow.getCell(0).setText(String.valueOf(i+1));
-	        	newRow.getCell(1).setText(operations.get(i).toString());
-	        }
-       
+			XWPFTable table = document.createTable();
+
+			//create first row
+			XWPFTableRow tableRowOne = table.getRow(0);
+			tableRowOne.getCell(0).setText("Number");
+			tableRowOne.addNewTableCell().setText("Operation");
+
+
+			for(int i=0;i<operations.size();i++)
+			{
+				XWPFTableRow newRow = table.createRow();
+				newRow.getCell(0).setText(String.valueOf(i+1));
+				newRow.getCell(1).setText(operations.get(i).toString());
+			}
+
 			document.write(out);
-	        out.close();
-	        
+			out.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		File file = new File(fileLocation);
-        return file;
+		return file;
     }
 }

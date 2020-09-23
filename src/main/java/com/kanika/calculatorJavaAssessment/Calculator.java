@@ -68,7 +68,7 @@ public class Calculator {
 
     public Integer add(List<Integer> numbers) 
     {    	
-    	// Check Mode and assign operation name, instantiate Default adder
+		// Check Mode and assign operation name, instantiate Default adder
 		String operationName = null;
 		if(calculationMode==null || adder==null) {
 			operationName = "ADD";
@@ -76,32 +76,32 @@ public class Calculator {
 		}
 		else if(calculationMode==CalculationMode.CUSTOM && adder!=null)
 			operationName = "CUSTOM ADD";
-		
+
 		// Get Summation
 		Integer sum = adder.add(numbers);
-    	
-    	// Instantiate the list operations if not done yet
+
+		// Instantiate the list operations if not done yet
 		if(operations==null)
 			operations = new ArrayList<Operation>();
-		
+
 		// Add to Operations
 		for(int i=0;i<numbers.size()-1;i++)	{
 			int currsum = adder.add(numbers.subList(0,i+1));
-			Operation op=new Operation(currsum, adder.add(Arrays.asList(numbers.get(i+1))),operationName);			
+			Operation op=new Operation(currsum, adder.add(Arrays.asList(numbers.get(i+1))),operationName);
 			operations.add(op);
 		}
 		if(numbers.size()==1) {
 			// Add 0 in operations if size of numbers is 1
-			Operation op=new Operation(adder.add(Arrays.asList(numbers.get(0))),0,operationName);			
-			operations.add(op); 
+			Operation op=new Operation(adder.add(Arrays.asList(numbers.get(0))),0,operationName);
+			operations.add(op);
 		}
-		
+
 		return sum;
     }
 
     public Integer subtract(Integer a, Integer b) {
     	
-    	// Check Mode and assign operation name, instantiate Default subtractor
+		// Check Mode and assign operation name, instantiate Default subtractor
 		String operationName = null;
 		if(calculationMode==null || subtractor==null) {
 			operationName = "SUB";
@@ -109,24 +109,24 @@ public class Calculator {
 		}
 		else if(calculationMode==CalculationMode.CUSTOM && subtractor!=null)
 			operationName = "CUSTOM SUB";
-    	
-    	// Get Subtraction
-    	Integer sub = subtractor.subtract(a, b);
-    	
-    	// Instantiate the list operations if not done yet
-    	if(operations==null)
+
+		// Get Subtraction
+		Integer sub = subtractor.subtract(a, b);
+
+		// Instantiate the list operations if not done yet
+		if(operations==null)
 			operations = new ArrayList<Operation>();
-    	
+
 		// Add to operations
-		Operation op=new Operation(a,b,operationName);			
-		operations.add(op); 			
-		
-    	return sub;
+		Operation op=new Operation(a,b,operationName);
+		operations.add(op);
+
+		return sub;
     }
 
     public Integer multiply(List<Integer> numbers) {
-    	
-    	// Check Mode and assign operation name, instantiate Default multiplier
+
+		// Check Mode and assign operation name, instantiate Default multiplier
 		String operationName = null;
 		if(calculationMode==null || multiplier==null) {
 			operationName = "MUL";
@@ -135,30 +135,30 @@ public class Calculator {
 		else if(calculationMode==CalculationMode.CUSTOM && multiplier!=null)
 			operationName = "CUSTOM MUL";
 
-    	// Get Multiplication
-    	Integer mul = multiplier.multiply(numbers);
+		// Get Multiplication
+		Integer mul = multiplier.multiply(numbers);
 
-    	// Instantiate the list operations if not done yet
-    	if(operations==null)
+		// Instantiate the list operations if not done yet
+		if(operations==null)
 			operations = new ArrayList<Operation>();
-    	
-    	// Add to operations
+
+		// Add to operations
 		for(int i=0;i<numbers.size()-1;i++)	{
 			int currmul = multiplier.multiply(numbers.subList(0,i+1));
-			Operation op=new Operation(currmul, multiplier.multiply(Arrays.asList(numbers.get(i+1))),operationName);			
+			Operation op=new Operation(currmul, multiplier.multiply(Arrays.asList(numbers.get(i+1))),operationName);
 			operations.add(op);
 		}
 		if(numbers.size()==1) {
-			Operation op=new Operation(multiplier.multiply(Arrays.asList(numbers.get(0))),1,operationName);			
-			operations.add(op); 
-		}	
-    	
-    	return mul;
+			Operation op=new Operation(multiplier.multiply(Arrays.asList(numbers.get(0))),1,operationName);
+			operations.add(op);
+		}
+
+		return mul;
     }
 
     public Integer divide(Integer a, Integer b) {
     	
-    	// Check Mode and assign operation name, instantiate Default divider
+		// Check Mode and assign operation name, instantiate Default divider
 		String operationName = null;
 		if(calculationMode==null || divider==null) {
 			operationName = "DIV";
@@ -167,18 +167,18 @@ public class Calculator {
 		else if(calculationMode==CalculationMode.CUSTOM && divider!=null)
 			operationName = "CUSTOM DIV";
 
-    	// Get Division
-    	Integer div = divider.divide(a, b);
-    	
-    	// Instantiate the list operations if not done yet
-    	if(operations==null)
+		// Get Division
+		Integer div = divider.divide(a, b);
+
+		// Instantiate the list operations if not done yet
+		if(operations==null)
 			operations  = new ArrayList<Operation>();
-    	
-    	// Add to operations
+
+		// Add to operations
 		Operation op=new Operation(a, b, operationName);
 		operations.add(op);
-    	
-    	return div;
+
+		return div;
     }
 
     public void sendResults() {
