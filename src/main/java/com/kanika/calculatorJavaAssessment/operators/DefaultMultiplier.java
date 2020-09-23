@@ -1,6 +1,7 @@
 package com.kanika.calculatorJavaAssessment.operators;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class DefaultMultiplier implements Multiplier {
     @Override
@@ -9,9 +10,16 @@ public class DefaultMultiplier implements Multiplier {
     	if(numbers.isEmpty())
     		throw new IllegalStateException() ;
     	
-    	Integer mul=1;
+    	// Generalized Method
+    	/*Integer mul=1;
     	for(int i=0; i<numbers.size(); i++)
-    		mul*=numbers.get(i);
-    	return mul;
+    		mul.updateAndGet(v -> v * numbers.get(i));
+
+    	return mul;*/
+
+		// Using Lambdas
+		AtomicReference<Integer> mul= new AtomicReference<>(1);
+    	numbers.forEach(i -> mul.updateAndGet(v -> v * i));
+    	return mul.get();
     }
 }

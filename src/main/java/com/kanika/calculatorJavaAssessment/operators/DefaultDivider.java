@@ -6,10 +6,7 @@ public class DefaultDivider implements Divider {
         // Dividing two numbers a/b
     	if(a==null || b==null || b==0)
     		throw new IllegalStateException();
-    	
-    	Integer div;
-		div=a/b;
-		return div;
-        //return null;
+
+		return a/b;
     }
 }

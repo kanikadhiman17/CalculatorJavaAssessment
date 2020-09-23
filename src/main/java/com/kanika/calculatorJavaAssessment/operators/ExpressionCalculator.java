@@ -10,8 +10,7 @@ public class ExpressionCalculator {
 	public Integer calculateExpression(String expression, Calculator calculator)
 	{
 		try 
-    	{
-	        //TODO
+		{
 	    	char[] tokens = expression.toCharArray(); 
 	    	  
 	        // Stack for numbers: 'values' 
