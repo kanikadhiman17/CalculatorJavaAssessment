@@ -14,12 +14,15 @@ public class DefaultMultiplier implements Multiplier {
     	/*Integer mul=1;
     	for(int i=0; i<numbers.size(); i++)
     		mul.updateAndGet(v -> v * numbers.get(i));
-
     	return mul;*/
 
 		// Using Lambdas
-		AtomicReference<Integer> mul= new AtomicReference<>(1);
+		/*AtomicReference<Integer> mul= new AtomicReference<>(1);
     	numbers.forEach(i -> mul.updateAndGet(v -> v * i));
-    	return mul.get();
-    }
+    	return mul.get();*/
+
+    	// Using Stream
+		return numbers.stream().reduce(1, (a,b)->a*b);
+
+	}
 }

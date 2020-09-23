@@ -19,9 +19,13 @@ public class DefaultAdder implements Adder{
     	return sum;*/
 
 		// Using Lambdas
-    	AtomicReference<Integer> sum = new AtomicReference<>(0);
+    	/*AtomicReference<Integer> sum = new AtomicReference<>(0);
     	numbers.forEach(i -> sum.updateAndGet(v -> v + i));
 
-    	return sum.get();
+    	return sum.get();*/
+
+    	// Using Stream
+		return numbers.stream().reduce(0, (a,b)->a+b);
+
     }
 }
